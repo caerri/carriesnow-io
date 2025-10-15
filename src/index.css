@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer theme {
+  :root {
+    /* Light mode colors */
+    --color-bg-primary: 255 255 255;
+    --color-bg-secondary: 249 250 251;
+    --color-text-primary: 17 24 39;
+    --color-text-secondary: 107 114 128;
+    --color-border: 229 231 235;
+    --color-footer-text: 156 163 175;
+    --color-footer-icon: 209 213 219;
+    --color-accent: 99 102 241; /* Indigo-500 */
+    --color-accent-orange: 251 146 60; /* Orange-400 */
+  }
+
+  .dark {
+    /* True black theme with vibrant accents */
+    --color-bg-primary: 0 0 0; /* Pure black */
+    --color-bg-secondary: 17 17 17; /* Near black for cards */
+    --color-text-primary: 255 255 255; /* Pure white text */
+    --color-text-secondary: 163 163 163; /* Light gray for secondary */
+    --color-border: 38 38 38; /* Subtle borders */
+    --color-footer-text: 115 115 115; /* Muted footer text */
+    --color-footer-icon: 82 82 82; /* Subtle footer icons */
+    --color-accent: 139 92 246; /* Purple-500 bright */
+    --color-accent-orange: 251 146 60; /* Orange-400 */
+  }
+}
+
+@layer base {
+  :root {
+    /* Backwards compatibility - map old vars to new */
+    --bg-primary: var(--color-bg-primary);
+    --bg-secondary: var(--color-bg-secondary);
+    --text-primary: var(--color-text-primary);
+    --text-secondary: var(--color-text-secondary);
+    --border: var(--color-border);
+    --footer-text: var(--color-footer-text);
+    --footer-icon: var(--color-footer-icon);
+  }
+
+  body {
+    /* Apply theme colors and font globally */
+    font-family: theme('fontFamily.sans');
+    background-color: rgb(var(--bg-primary));
+    color: rgb(var(--text-primary));
+    padding: 0 3rem;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      padding: 0 1.5rem;
+    }
+  }
+
+  /* Global link styling - no underlines, subtle hover effect */
+  a {
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  /* Links in body text (not buttons) - make them stand out */
+  p a,
+  .prose a {
+    color: rgb(79 70 229); /* Indigo-600 */
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+  }
+
+  p a:hover,
+  .prose a:hover {
+    color: rgb(67 56 202); /* Indigo-700 */
+    border-bottom-color: rgb(67 56 202);
+  }
+
+  /* Dark mode link colors */
+  .dark p a,
+  .dark .prose a {
+    color: rgb(129 140 248); /* Indigo-400 */
+  }
+
+  .dark p a:hover,
+  .dark .prose a:hover {
+    color: rgb(165 180 252); /* Indigo-300 */
+    border-bottom-color: rgb(165 180 252);
+  }
+}
+
+@layer utilities {
+  /* Fade in and slide up animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+    opacity: 0;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+    opacity: 0;
+  }
+}
+
+
