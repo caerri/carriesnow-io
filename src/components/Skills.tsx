@@ -7,6 +7,18 @@ export function Skills() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
+  // Helper to get detailed description for tooltip
+  const getProficiencyDescription = (proficiency: number): string => {
+    if (proficiency === 0) return 'On Radar: Adjacent tech, contextually aware';
+    if (proficiency <= 10) return 'Exploring: Initial exposure, understanding what it is';
+    if (proficiency <= 25) return 'Beginner: Just starting, needs guidance';
+    if (proficiency <= 40) return 'Learning: Building foundational skills';
+    if (proficiency <= 55) return 'Developing: Can work with guidance';
+    if (proficiency <= 70) return 'Comfortable: Independent on common tasks';
+    if (proficiency <= 85) return 'Proficient: Strong working knowledge';
+    return 'Advanced: Deep understanding, can teach others';
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -51,7 +63,7 @@ export function Skills() {
 
             // Heatmap color gradient - more granular
             const getHeatmapColor = (proficiency: number): string => {
-              if (proficiency === 0) return '#ef4444'; // Red - not set
+              if (proficiency === 0) return '#6b7280'; // Gray - on radar, neutral
               if (proficiency <= 10) return '#dc2626'; // Deep red
               if (proficiency <= 20) return '#f97316'; // Orange-red
               if (proficiency <= 30) return '#fb923c'; // Orange
@@ -83,8 +95,9 @@ export function Skills() {
                   <span
                     className="ml-auto text-sm font-medium"
                     style={{
-                      color: skill.proficiency === 0 ? '#ef4444' : 'rgb(var(--text-secondary))'
+                      color: skill.proficiency === 0 ? '#9ca3af' : 'rgb(var(--text-secondary))'
                     }}
+                    title={getProficiencyDescription(skill.proficiency)}
                   >
                     {level}
                   </span>
@@ -119,7 +132,8 @@ export function Skills() {
                   {skill.proficiency === 0 && (
                     <span
                       className="text-sm font-mono w-12 text-right font-bold"
-                      style={{ color: '#ef4444' }}
+                      style={{ color: '#9ca3af' }}
+                      title={getProficiencyDescription(skill.proficiency)}
                     >
                       0%
                     </span>
