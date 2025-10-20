@@ -10,7 +10,8 @@ import {
   SiTailwindcss,
   SiApollographql,
   SiRubyonrails,
-  SiGraphql
+  SiGraphql,
+  SiLangchain
 } from 'react-icons/si';
 import { BiLogoPostgresql } from 'react-icons/bi';
 
@@ -156,5 +157,11 @@ export const skills: Skill[] = [
     icon: SiGraphql,
     proficiency: 0, // On Radar - Adjacent tech for APIs
     category: 'databases'
+  },
+  {
+    name: 'LangChain',
+    icon: SiLangchain,
+    proficiency: 0, // On Radar - AI/LLM orchestration framework
+    category: 'tools'
   },
 ];
