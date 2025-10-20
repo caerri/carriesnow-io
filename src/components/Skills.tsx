@@ -51,7 +51,7 @@ export function Skills() {
         transition: 'opacity 1.5s ease-out, transform 1.5s ease-out'
       }}
     >
-      <div style={{ maxWidth: '500px' }} className="mx-auto">
+      <div style={{ maxWidth: '650px' }} className="mx-auto">
         <h2 className="text-4xl font-bold mb-12 text-center" style={{ color: 'rgb(var(--text-primary))' }}>
           Technical Skills
         </h2>
